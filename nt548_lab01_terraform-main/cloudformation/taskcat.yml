@@ -1,10 +1,17 @@
 project:
-  name: nt548-tf-lab01
+  name: nt548-taskcat
   regions:
     - ap-southeast-1
+  cleanup: true
 
 tests:
-  default:
-    template: nt548-network-ec2.yaml
+  vpc-ec2-test:
+    template: templates/main.yaml
     parameters:
-      KeyName: keypair_lab2_cau2
+      VpcCidr: 10.0.0.0/16
+      PublicSubnetCidr: 10.0.1.0/24
+      PrivateSubnetCidr: 10.0.2.0/24
+      AllowedSSH: 0.0.0.0/0
+      InstanceType: t3.micro
+      KeyName: keypar_lab2_cau2
+      AmiId: ami-05f071c65e32875a8
