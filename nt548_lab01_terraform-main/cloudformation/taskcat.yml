@@ -1,5 +1,5 @@
 project:
-  name: nt548-cloudformation-lab
+  name: nt548-tf-lab01
   regions:
     - ap-southeast-1
 
