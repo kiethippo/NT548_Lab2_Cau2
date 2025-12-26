@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - echo "Installing cfn-lint and taskcat..."
+      - pip install --upgrade pip
+      - pip install cfn-lint taskcat
+
+  pre_build:
+    commands:
+      - echo "Validating CloudFormation template with cfn-lint..."
+
+  build:
+    commands:
+      - cfn-lint nt548-network-ec2.yaml
+      - echo "Running taskcat tests..."
+      - taskcat test run
+
+artifacts:
+  files:
+    - '**/*'

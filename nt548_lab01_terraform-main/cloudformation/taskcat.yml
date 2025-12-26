@@ -1,0 +1,10 @@
+project:
+  name: nt548-cloudformation-lab
+  regions:
+    - ap-southeast-1
+
+tests:
+  default:
+    template: nt548-network-ec2.yaml
+    parameters:
+      KeyName: keypair_lab2_cau2
