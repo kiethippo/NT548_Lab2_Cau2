@@ -6,7 +6,7 @@ project:
 
 tests:
   vpc-ec2-test:
-    template: nt548-network-ec2.yaml
+    template: cloudformation/nt548-network-ec2.yaml
     parameters:
       VpcCidr: 10.0.0.0/16
       PublicSubnetCidr: 10.0.1.0/24
