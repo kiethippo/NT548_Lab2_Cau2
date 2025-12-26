@@ -12,7 +12,7 @@ phases:
   pre_build:
     commands:
       - echo "Running cfn-lint..."
-      - cfn-lint templates/main.yaml
+      - cfn-lint nt548-network-ec2.yaml
 
   build:
     commands:
