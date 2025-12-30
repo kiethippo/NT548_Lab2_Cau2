@@ -9,6 +9,7 @@ phases:
       - python3 -m venv venv
       - source venv/bin/activate   
       - pip install --upgrade pip
+      - pip install taskcat
       - pip install cfn-lint
 
   pre_build:
@@ -19,7 +20,7 @@ phases:
   build:
     commands:
       - echo "Running taskcat..."
-      - taskcat test run
+      - taskcat test run --config .taskcat.yml
 
 artifacts:
   files:
