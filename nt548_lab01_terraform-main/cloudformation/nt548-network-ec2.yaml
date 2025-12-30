@@ -93,8 +93,6 @@ Resources:
 
   NatEip:
     Type: AWS::EC2::EIP
-    Properties:
-      Domain: vpc
 
   NatGateway:
     Type: AWS::EC2::NatGateway
@@ -174,8 +172,8 @@ Resources:
             Ref: AllowedSSH
       SecurityGroupEgress:
         - IpProtocol: -1
-          FromPort: 0
-          ToPort: 0
+          #FromPort: 0
+          #ToPort: 0
           CidrIp: 0.0.0.0/0
       Tags:
         - Key: Name
@@ -195,8 +193,8 @@ Resources:
             Ref: PublicEC2SG
       SecurityGroupEgress:
         - IpProtocol: -1
-          FromPort: 0
-          ToPort: 0
+          #FromPort: 0
+          #ToPort: 0
           CidrIp: 0.0.0.0/0
       Tags:
         - Key: Name
@@ -204,8 +202,6 @@ Resources:
 
   PublicEC2:
     Type: AWS::EC2::Instance
-    DependsOn: #them vao depend on de chay taskcat
-      - PublicSubnetAssoc
     Properties:
       ImageId:
         Ref: AmiId
@@ -223,8 +219,6 @@ Resources:
 
   PrivateEC2:
     Type: AWS::EC2::Instance
-    DependsOn:  #them vao depend on de chay taskcat
-      - PrivateRoute
     Properties:
       ImageId:
         Ref: AmiId
