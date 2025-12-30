@@ -174,8 +174,6 @@ Resources:
             Ref: AllowedSSH
       SecurityGroupEgress:
         - IpProtocol: -1
-          #FromPort: 0
-          #ToPort: 0
           CidrIp: 0.0.0.0/0
       Tags:
         - Key: Name
@@ -195,8 +193,6 @@ Resources:
             Ref: PublicEC2SG
       SecurityGroupEgress:
         - IpProtocol: -1
-          #FromPort: 0
-          #ToPort: 0
           CidrIp: 0.0.0.0/0
       Tags:
         - Key: Name
