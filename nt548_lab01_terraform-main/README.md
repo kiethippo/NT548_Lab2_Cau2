@@ -89,4 +89,4 @@ EC2 public: có Public IP, SSH được
 
 EC2 private: không có Public IP, chỉ SSH được từ public
 
-test 42eee
+test 42eeee
