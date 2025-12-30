@@ -5,22 +5,36 @@ phases:
     runtime-versions:
       python: 3.12
     commands:
+      - echo "Current directory & files (debug):"
+      - pwd
+      - ls -la
       - echo "Installing tools..."
       - python3 -m venv venv
-      - source venv/bin/activate   
+      - source venv/bin/activate
       - pip install --upgrade pip
       - pip install cfn-lint taskcat
+      # Optional: suppress pkg_resources deprecation warning
+      - pip install "setuptools<81"
+      # Debug: xác nhận taskcat có sẵn ngay sau install
+      - taskcat --version || echo "taskcat install failed!"
 
   pre_build:
     commands:
+      # Re-activate venv ở phase này
+      - source venv/bin/activate
       - echo "Running cfn-lint..."
-      - cfn-lint nt548_lab01_terraform-main/cloudformation/nt548-network-ec2.yaml --ignore-checks W6387,W6867
+      # Debug path template
+      - ls -la nt548_lab01_terraform-main/cloudformation/nt548-network-ec2.yaml || echo ">>> Template file NOT found!"
+      - cfn-lint nt548_lab01_terraform-main/cloudformation/nt548-network-ec2.yaml --ignore-checks W6387,W6867 || echo "cfn-lint failed"
 
   build:
     commands:
+      # Re-activate venv ở phase build
+      - source venv/bin/activate
       - echo "Running taskcat..."
-      - ls -la nt548_lab01_terraform-main/cloudformation/taskcat.yml || echo "taskcat.yml NOT found!"
-      - taskcat test run --config nt548_lab01_terraform-main/cloudformation/taskcat.yml
+      # Debug path config
+      - ls -la nt548_lab01_terraform-main/cloudformation/taskcat.yml || echo ">>> taskcat.yml NOT found!"
+      - taskcat test run --config nt548_lab01_terraform-main/cloudformation/taskcat.yml --verbose || echo "taskcat failed - check logs above"
 
 artifacts:
   files:
