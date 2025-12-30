@@ -20,6 +20,7 @@ Parameters:
   KeyName:
     Type: AWS::EC2::KeyPair::KeyName
     Description: Tên key pair để SSH
+    Default: ""
 
   InstanceType:
     Type: String
@@ -32,6 +33,7 @@ Parameters:
   AmiId:
     Type: AWS::EC2::Image::Id
     Description: AMI để tạo EC2
+    Default: ami-0c0b74d29acd0cd97
 
 Resources:
   VPC:
