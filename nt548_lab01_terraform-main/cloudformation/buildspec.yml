@@ -6,9 +6,9 @@ phases:
       python: 3.12
     commands:
       - echo "Installing tools..."
-      - python -m venv venv
+      - python3 -m venv venv
+      - source venv/bin/activate   
       - pip install --upgrade pip
-      - python.exe -m pip install --upgrade pip
       - pip install cfn-lint
 
   pre_build:
