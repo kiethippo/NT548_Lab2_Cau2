@@ -14,7 +14,7 @@ phases:
   pre_build:
     commands:
       - echo "Running cfn-lint..."
-      - cfn-lint cloudformation/nt548-network-ec2.yaml --ignore-checks W6387,W6867
+      - cfn-lint ./cloudformation/nt548-network-ec2.yaml --ignore-checks W6387,W6867
 
   build:
     commands:
