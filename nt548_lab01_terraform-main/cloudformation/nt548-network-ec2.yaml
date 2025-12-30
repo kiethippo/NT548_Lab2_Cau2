@@ -209,8 +209,8 @@ Resources:
         Ref: AmiId
       InstanceType:
         Ref: InstanceType
-      KeyName:
-        Ref: KeyName
+      # KeyName:
+      #   Ref: KeyName
       SubnetId:
         Ref: PublicSubnet
       SecurityGroupIds:
@@ -226,8 +226,8 @@ Resources:
         Ref: AmiId
       InstanceType:
         Ref: InstanceType
-      KeyName:
-        Ref: KeyName
+      # KeyName:
+      #   Ref: KeyName
       SubnetId:
         Ref: PrivateSubnet
       SecurityGroupIds:
