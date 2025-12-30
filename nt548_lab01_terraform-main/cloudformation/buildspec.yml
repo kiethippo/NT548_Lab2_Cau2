@@ -9,8 +9,7 @@ phases:
       - python3 -m venv venv
       - source venv/bin/activate   
       - pip install --upgrade pip
-      - pip install taskcat
-      - pip install cfn-lint
+      - pip install cfn-lint taskcat
 
   pre_build:
     commands:
@@ -20,6 +19,7 @@ phases:
   build:
     commands:
       - echo "Running taskcat..."
+      - ls -la nt548_lab01_terraform-main/cloudformation/taskcat.yml || echo "taskcat.yml NOT found!"
       - taskcat test run --config nt548_lab01_terraform-main/cloudformation/taskcat.yml
 
 artifacts:
